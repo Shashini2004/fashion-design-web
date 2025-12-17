@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="css/cart.css"
+</head>
+<body bgcolor="black">
+    <font color="white">
+<br><br><br>
+    <table id="cartTable">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Remove</th>
+        </tr>
+    </table>
+    <br>
+    <center><h3 id="total">Total: Rs.0</h3></center>
+    
+    <br>
+    <button class="order-btn"> <a href="Home.html"> ORDER NOW </a></button>
+    </font>
+
+<script>
+    function loadCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let table = document.getElementById("cartTable");
+
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            let row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td> ${item.itemName}</td>
+                <td>Rs.${item.itemPrice}</td>
+                <td><button onclick="removeItem(${index})">X</button></td>
+            `;
+
+            table.appendChild(row);
+
+            total += item.itemPrice;
+        });
+
+        document.getElementById("total").innerHTML = "Total: Rs." + total;
+    }
+
+    function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload(); 
+    }
+
+    loadCart(); 
+</script>
+
+</body
+>
+</html>

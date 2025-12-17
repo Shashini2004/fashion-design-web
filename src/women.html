@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clothing Store | Women</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+
+<!--Cart Icon-->
+
+<div class="header">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #80818b;
+        }
+        .header {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        </style>
+        <div class="cart-icon" onclick="location.href='cart.html'">
+            🛒
+            <div id="cartCount" class="cart-count">0</div>
+        </div>
+    </div>
+
+    <h1>Women's Clothing</h1>
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Men.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="sale.html">Sale</a>
+        <a href="lookbook.html">Lookbook</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart 🛒</a>
+    </nav>
+</header>
+
+<div class="container"><br>
+    <h2><font color= #000000>Women's Collection</font></h2><br>
+    <div class="grid">
+        <div class="product"><img src="images/blouse.PNG" width="100px" height="300px"><h3>Blouse - 1350 LKR</h3>
+            <button onclick="addToCart('Blouse',1350)">Add to Cart</button></div>
+        <div class="product"><img src="images/summer.png" width="100px" height="300px"><h3>Summer Dress - 2000 LKR</h3>
+            <button onclick="addToCart('Sumeer Dress',2000)">Add to Cart</button></div>
+        <div class="product"><img src="images/heals.png" width="100px" height="300px" ><h3>Heels - 1999 LKR</h3>
+            <button onclick="addToCart('heals',1990)">Add to Cart</button></div>
+        <div class="product"><img src="images/Saree.webp" width="100px" height="300px"><h3>Saree - 5500 LKR</h3>
+            <button onclick="addToCart('Saree',5500)">Add to Cart</button></div>
+<div class="product"><img src="images/Ltshirts.jpeg" width="100px" height="300px"><h3>T-shirt - 950 LKR</h3>
+    <button onclick="addToCart('Ladies tshirts',950)">Add to Cart</button></div>
+    <div class="product"><img src="images/Top.jpg" width="100px" height="300px"><h3>Top - 1000 LKR</h3>
+        <button onclick="addToCart('Top ',1000)">Add to Cart</button></div>
+    <div class="product"><img src="images/Skirt.jpeg" width= width="100px" height="300px"><h3>Skirt - 1500 LKR</h3>
+        <button onclick="addToCart('Skirt ',1500)">Add to Cart</button></div>
+    <div class="product"><img src="images/sportkit.jpg" width="100px" height="300px"><h3>Sport-wear - 2500 LKR</h3>
+        <button onclick="addToCart('Sport kit Ladies',2500)">Add to Cart</button></div> 
+    </div>
+</div>
+
+<!--cart script-->
+
+<script>
+
+    // Load counter on page load
+    function loadCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        document.getElementById("cartCount").innerText = cart.length;
+    }
+    
+    // Add item to cart
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ itemName: name, itemPrice: price });
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCartCount();
+    
+        // badge pop animation
+        let badge = document.getElementById("cartCount");
+        badge.style.animation = "none";
+        setTimeout(() => badge.style.animation = "pop 0.3s ease", 10);
+    }
+    
+    loadCartCount();
+    
+</script>    
+
+<footer>© 2025 Clothing Store</footer>
+</body>
+</html>
+s

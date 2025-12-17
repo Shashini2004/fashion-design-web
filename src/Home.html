@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clothing Store | Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+        
+</head>
+<body>
+<header>
+<!--Cart Icon-->
+
+<div class="header">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #80818b;
+        }
+        .header {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        </style>
+        <div class="cart-icon" onclick="location.href='cart.html'">
+            🛒
+            <div id="cartCount" class="cart-count">0</div>
+      
+        </div>
+
+        <!--Login Button-->
+        <li><a class="login-btn" href="login.html">Login</a></li>
+
+    </div>
+    <h1> Simply Style SL</h1>
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Men.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="sale.html">Sale</a>
+        <a href="lookbook.html">Lookbook</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart 🛒</a>
+    </nav>
+</header>
+
+<!--Photoes-->
+    <center> <h2> <font color="#000000"> New Fashion Collection 2025 </font> </h2>
+    <p> <font color="#000000"> Trendy • Affordable • Stylish</font> </p></center>
+</section>
+<div class="container">
+    <h2><font color= #000000> Trending Products</font></h2><br>
+    <div class="grid">
+        <div class="product"><img src="images/jacket.jpg" width="100px" height="300px"><h3>Jacket - 6000 LKR</h3>
+        <button onclick="addToCart('Jacket',6000)">Add to Cart</button></div>
+        <div class="product"><img src="images/dress.jpg" width="100px" height="300px"><h3>Dress - 3500 LKR</h3>
+            <button onclick="addToCart('Dress',3500)">Add to Cart</button></div>
+        <div class="product"><img src="images/shoes.jpg" width="100px" height="300px"><h3>Shoes - 4000 LKR</h3>
+            <button onclick="addToCart('Shoes',4000)">Add to Cart</button></div>
+        <div class="product"><img src="images/Skirt.jpeg" width="100px" height="300px"><h3>Skirt - 1500 LKR</h3>
+            <button onclick="addToCart('Shoes',1500)">Add to Cart</button></div>
+       <div class="product"><img src="images/Kandy.jpg" width="100px" height="300px"><h3>Kandian Saree - 5550 LKR</h3>
+    <button onclick="addToCart('Jacket',5550)">Add to Cart</button></div>
+    <div class="product"><img src="images/National.jpg" width="100px" height="300px" ><h3>National Wear - 4500 LKR</h3>
+        <button onclick="addToCart('Dress',4500)">Add to Cart</button></div>
+    <div class="product"><img src="images/kidshirt.jpg" width="100px" height="300px"><h3>Kids Shirt - 850 LKR</h3>
+        <button onclick="addToCart('KidsShirts',850)">Add to Cart</button></div>
+    <div class="product"><img src="images/Top.jpg" width="100px" height="300px"><h3>Top - 1000 LKR</h3>
+        <button onclick="addToCart('Shoes',1000)">Add to Cart</button></div>
+
+    </div>
+</div>
+
+<!--cart script-->
+
+<script>
+
+    // Load counter on page load
+    function loadCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        document.getElementById("cartCount").innerText = cart.length;
+    }
+    
+    // Add item to cart
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ itemName: name, itemPrice: price });
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCartCount();
+    
+        // badge pop animation
+        let badge = document.getElementById("cartCount");
+        badge.style.animation = "none";
+        setTimeout(() => badge.style.animation = "pop 0.3s ease", 10);
+    }
+    
+    loadCartCount();
+    
+</script>    
+
+<footer>© 2025 Clothing Store</footer>
+
+</body>
+</html>

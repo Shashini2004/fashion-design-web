@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clothing Store | Sale</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+
+   <!--Cart Icon-->
+
+   <div class="header">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #80818b;
+        }
+        .header {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        </style>
+        <div class="cart-icon" onclick="location.href='cart.html'">
+            🛒
+            <div id="cartCount" class="cart-count">0</div>
+        </div>
+    </div>
+
+
+    <h1>Sale</h1>
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="mens.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="sale.html">Sale</a>
+        <a href="lookbook.html">Lookbook</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart 🛒</a>
+    </nav>
+</header>
+
+<div class="container"><br>
+    <h2><font color= #000000>Special Discounts</font></h2><br>
+    <div class="grid">
+        <div class="product"><img src="images/jacket.jpg" width="100px" height="300px"><h3>Jacket - 40% Off</h3>
+            <button onclick="addToCart('Jacket - 40% Off',20)">Add to Cart</button></div>
+        <div class="product"><img src="images/dress.jpg" width="100px" height="300px"><h3>Dress - 30% Off</h3>
+            <button onclick="addToCart('Jacket - 40% Off',20)">Add to Cart</button></div>
+        <div class="product"><img src="images/shoes.jpg" width="100px" height="300px"><h3>Shoes - 50% Off</h3>
+            <button onclick="addToCart('Shoes - 50% Off',20)">Add to Cart</button></div>
+        <div class="product"><img src="images/hand bags.png" width="100px" height="300px"><h3>Hand Bag - 20% Off</h3>
+            <button onclick="addToCart('Hand Bag - 20% Off',20)">Add to Cart</button></div>
+    </div>
+</div>
+
+<footer>© 2025 Clothing Store</footer>
+
+<!--cart script-->
+
+<script>
+
+    // Load counter on page load
+    function loadCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        document.getElementById("cartCount").innerText = cart.length;
+    }
+    
+    // Add item to cart
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ itemName: name, itemPrice: price });
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCartCount();
+    
+        // badge pop animation
+        let badge = document.getElementById("cartCount");
+        badge.style.animation = "none";
+        setTimeout(() => badge.style.animation = "pop 0.3s ease", 10);
+    }
+    
+    loadCartCount();
+    
+</script>    
+</body>
+</html>
